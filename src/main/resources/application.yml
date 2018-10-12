@@ -1,0 +1,23 @@
+port : 8080
+
+spring:
+  datasource:
+    type: com.alibaba.druid.pool.DruidDataSource
+    driverClassName: @database.driverClassName@
+    driver-class-name: @database.driverClassName@
+    platform: mysql
+    url: @database.url@
+    username: @database.username@
+    password: @database.password@
+    initialSize: 5
+    minIdle: 5
+    maxActive: 20
+    maxWait: 60000
+    timeBetweenEvictionRunsMillis: 60000
+    minEvictableIdleTimeMillis: 300000
+    validationQuery: SELECT1FROMDUAL
+    testWhileIdle: true
+    testOnBorrow: false
+    testOnReturn: false
+    filters: stat,wall,slf4j
+    logSlowSql: true
