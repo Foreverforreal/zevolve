@@ -21,3 +21,8 @@ spring:
     testOnReturn: false
     filters: stat,wall,slf4j
     logSlowSql: true
+
+mybatis:
+  configuration:
+    map-underscore-to-camel-case: true
+  mapperLocations: classpath:mapper/*/*.xml

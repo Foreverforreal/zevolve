@@ -1,9 +1,7 @@
 package com.zhu.zevolve.codegen.service;
 
-import com.zhu.zevolve.codegen.model.Table;
+import com.zhu.zevolve.codegen.model.TableMeta;
+import com.zhu.zevolve.common.base.service.BaseService;
 
-import java.util.List;
-
-public interface TableService {
-    List<Table> getAllTable();
+public interface TableService extends BaseService<TableMeta> {
 }
