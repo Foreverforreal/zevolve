@@ -14,13 +14,14 @@ import org.springframework.web.bind.annotation.RestController;
 public class TableController {
     @Autowired
     TableService tableService;
+    @Autowired
+    CodeGenUtil codeGenUtil;
 
     @GetMapping("list")
     public ResponseEntity<TableMeta> list(){
         ResponseEntity response = new ResponseEntity();
         response.setData(tableService.selectAll());
 
-        CodeGenUtil codeGenUtil = new CodeGenUtil();
         try {
             codeGenUtil.gen();
         } catch (Exception e) {

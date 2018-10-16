@@ -57,8 +57,6 @@ dependencies {
     implementation('com.alibaba:druid:1.1.11')                                  //druid
     implementation('org.apache.shiro:shiro-spring:1.4.0')                       //shiro
     implementation('org.freemarker:freemarker:2.3.28')                          //freemarker
-
-
 }
 
 def loadConfigGroovy(){
