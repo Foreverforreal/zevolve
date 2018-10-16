@@ -23,6 +23,6 @@ spring:
     logSlowSql: true
 
 mybatis:
+  mapperLocations: classpath:mapper/*/*.xml
   configuration:
     map-underscore-to-camel-case: true
-  mapperLocations: classpath:mapper/*/*.xml
