@@ -26,3 +26,10 @@ mybatis:
   mapperLocations: classpath:mapper/*/*.xml
   configuration:
     map-underscore-to-camel-case: true
+
+codeGen:
+  datasource:
+    driverClassName: @database.driverClassName@
+    formatUrl: @database.codeGenUrl@
+    username: @database.username@
+    password: @database.password@
