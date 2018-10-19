@@ -1,5 +1,7 @@
-package com.zhu.zevolve.codegen.mapper;
+package com.zhu.zevolve.codegen.controller;
 
+import org.junit.After;
+import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -12,13 +14,20 @@ import org.springframework.test.web.reactive.server.WebTestClient;
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.DEFINED_PORT)
 @AutoConfigureWebTestClient
-public class TableMapperTest {
+public class TableControllerTest {
     @Autowired
     private WebTestClient webClient;
 
-    @Test
-    public void getAllTable() throws Exception {
+    @Before
+    public void setUp() throws Exception {
+    }
 
+    @After
+    public void tearDown() throws Exception {
+    }
+
+    @Test
+    public void list() {
         FluxExchangeResult<String> result =
                 this.webClient.get()
                         .uri("/codegen/table/list")
@@ -27,5 +36,8 @@ public class TableMapperTest {
                         .returnResult(String.class);
         System.out.println(result);
     }
-}
 
+    @Test
+    public void gen() {
+    }
+}

@@ -14,6 +14,7 @@ public class Columns {
     private String tableName;
 
     @Column(name = "`COLUMN_NAME`")
+    @Id
     private String columnName;
 
     @Column(name = "`ORDINAL_POSITION`")
