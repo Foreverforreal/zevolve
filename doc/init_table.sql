@@ -1,15 +1,11 @@
 CREATE SCHEMA `zevolve`;
 
-
-
-
 CREATE TABLE sys_user
 (
     id int,
-    name varchar(20),
+    user_name varchar(20),
     password varchar(20),
-    column_4 int,
-    salt varchar(100)
+    salt varchar(20)
 );
 ALTER TABLE sys_user COMMENT = '系统用户表';
 
