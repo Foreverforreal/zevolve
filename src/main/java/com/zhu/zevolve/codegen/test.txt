@@ -1,0 +1,432 @@
+目标package: com.zhu.zevolve.codegen.
+
+当前时间：
+2018年10月19日
+上午11:29:39
+2018-10-19 11:29:39
+
+所有配置的属性信息:
+modulePackage - com.zhu.zevolve.codegen
+fileName - test.txt
+targetProject - src/main/java
+targetPackage - com.zhu.zevolve.codegen.
+templatePath - generator/test-one.ftl
+
+实体和表的信息：
+表名：COLUMNS
+变量名：columns
+小写名：columns
+类名：Columns
+全名：com.zhu.zevolve.codegen.model.Columns
+包名：com.zhu.zevolve.codegen.model
+
+列的信息：
+=====================================
+主键：
+
+基础列：
+    -------------------------------------
+    列名：TABLE_CATALOG
+    列类型：VARCHAR
+    字段名：tableCatalog
+    注释：
+    类型包名：java.lang
+    类型短名：String
+    类型全名：java.lang.String
+    是否主键：false
+    是否可空：false
+    是否为BLOB列：false
+    是否为String列：true
+    是否为字符串列：true
+    是否为日期列：false
+    是否为时间列：false
+    是否为序列列：false
+    列长度：512
+    列精度：0
+    -------------------------------------
+    列名：TABLE_SCHEMA
+    列类型：VARCHAR
+    字段名：tableSchema
+    注释：
+    类型包名：java.lang
+    类型短名：String
+    类型全名：java.lang.String
+    是否主键：false
+    是否可空：false
+    是否为BLOB列：false
+    是否为String列：true
+    是否为字符串列：true
+    是否为日期列：false
+    是否为时间列：false
+    是否为序列列：false
+    列长度：64
+    列精度：0
+    -------------------------------------
+    列名：TABLE_NAME
+    列类型：VARCHAR
+    字段名：tableName
+    注释：
+    类型包名：java.lang
+    类型短名：String
+    类型全名：java.lang.String
+    是否主键：false
+    是否可空：false
+    是否为BLOB列：false
+    是否为String列：true
+    是否为字符串列：true
+    是否为日期列：false
+    是否为时间列：false
+    是否为序列列：false
+    列长度：64
+    列精度：0
+    -------------------------------------
+    列名：COLUMN_NAME
+    列类型：VARCHAR
+    字段名：columnName
+    注释：
+    类型包名：java.lang
+    类型短名：String
+    类型全名：java.lang.String
+    是否主键：false
+    是否可空：false
+    是否为BLOB列：false
+    是否为String列：true
+    是否为字符串列：true
+    是否为日期列：false
+    是否为时间列：false
+    是否为序列列：false
+    列长度：64
+    列精度：0
+    -------------------------------------
+    列名：ORDINAL_POSITION
+    列类型：BIGINT
+    字段名：ordinalPosition
+    注释：
+    类型包名：java.lang
+    类型短名：Long
+    类型全名：java.lang.Long
+    是否主键：false
+    是否可空：false
+    是否为BLOB列：false
+    是否为String列：false
+    是否为字符串列：false
+    是否为日期列：false
+    是否为时间列：false
+    是否为序列列：false
+    列长度：20
+    列精度：0
+    -------------------------------------
+    列名：IS_NULLABLE
+    列类型：VARCHAR
+    字段名：isNullable
+    注释：
+    类型包名：java.lang
+    类型短名：String
+    类型全名：java.lang.String
+    是否主键：false
+    是否可空：false
+    是否为BLOB列：false
+    是否为String列：true
+    是否为字符串列：true
+    是否为日期列：false
+    是否为时间列：false
+    是否为序列列：false
+    列长度：3
+    列精度：0
+    -------------------------------------
+    列名：DATA_TYPE
+    列类型：VARCHAR
+    字段名：dataType
+    注释：
+    类型包名：java.lang
+    类型短名：String
+    类型全名：java.lang.String
+    是否主键：false
+    是否可空：false
+    是否为BLOB列：false
+    是否为String列：true
+    是否为字符串列：true
+    是否为日期列：false
+    是否为时间列：false
+    是否为序列列：false
+    列长度：64
+    列精度：0
+    -------------------------------------
+    列名：CHARACTER_MAXIMUM_LENGTH
+    列类型：BIGINT
+    字段名：characterMaximumLength
+    注释：
+    类型包名：java.lang
+    类型短名：Long
+    类型全名：java.lang.Long
+    是否主键：false
+    是否可空：true
+    是否为BLOB列：false
+    是否为String列：false
+    是否为字符串列：false
+    是否为日期列：false
+    是否为时间列：false
+    是否为序列列：false
+    列长度：20
+    列精度：0
+    -------------------------------------
+    列名：CHARACTER_OCTET_LENGTH
+    列类型：BIGINT
+    字段名：characterOctetLength
+    注释：
+    类型包名：java.lang
+    类型短名：Long
+    类型全名：java.lang.Long
+    是否主键：false
+    是否可空：true
+    是否为BLOB列：false
+    是否为String列：false
+    是否为字符串列：false
+    是否为日期列：false
+    是否为时间列：false
+    是否为序列列：false
+    列长度：20
+    列精度：0
+    -------------------------------------
+    列名：NUMERIC_PRECISION
+    列类型：BIGINT
+    字段名：numericPrecision
+    注释：
+    类型包名：java.lang
+    类型短名：Long
+    类型全名：java.lang.Long
+    是否主键：false
+    是否可空：true
+    是否为BLOB列：false
+    是否为String列：false
+    是否为字符串列：false
+    是否为日期列：false
+    是否为时间列：false
+    是否为序列列：false
+    列长度：20
+    列精度：0
+    -------------------------------------
+    列名：NUMERIC_SCALE
+    列类型：BIGINT
+    字段名：numericScale
+    注释：
+    类型包名：java.lang
+    类型短名：Long
+    类型全名：java.lang.Long
+    是否主键：false
+    是否可空：true
+    是否为BLOB列：false
+    是否为String列：false
+    是否为字符串列：false
+    是否为日期列：false
+    是否为时间列：false
+    是否为序列列：false
+    列长度：20
+    列精度：0
+    -------------------------------------
+    列名：DATETIME_PRECISION
+    列类型：BIGINT
+    字段名：datetimePrecision
+    注释：
+    类型包名：java.lang
+    类型短名：Long
+    类型全名：java.lang.Long
+    是否主键：false
+    是否可空：true
+    是否为BLOB列：false
+    是否为String列：false
+    是否为字符串列：false
+    是否为日期列：false
+    是否为时间列：false
+    是否为序列列：false
+    列长度：20
+    列精度：0
+    -------------------------------------
+    列名：CHARACTER_SET_NAME
+    列类型：VARCHAR
+    字段名：characterSetName
+    注释：
+    类型包名：java.lang
+    类型短名：String
+    类型全名：java.lang.String
+    是否主键：false
+    是否可空：true
+    是否为BLOB列：false
+    是否为String列：true
+    是否为字符串列：true
+    是否为日期列：false
+    是否为时间列：false
+    是否为序列列：false
+    列长度：32
+    列精度：0
+    -------------------------------------
+    列名：COLLATION_NAME
+    列类型：VARCHAR
+    字段名：collationName
+    注释：
+    类型包名：java.lang
+    类型短名：String
+    类型全名：java.lang.String
+    是否主键：false
+    是否可空：true
+    是否为BLOB列：false
+    是否为String列：true
+    是否为字符串列：true
+    是否为日期列：false
+    是否为时间列：false
+    是否为序列列：false
+    列长度：32
+    列精度：0
+    -------------------------------------
+    列名：COLUMN_KEY
+    列类型：VARCHAR
+    字段名：columnKey
+    注释：
+    类型包名：java.lang
+    类型短名：String
+    类型全名：java.lang.String
+    是否主键：false
+    是否可空：false
+    是否为BLOB列：false
+    是否为String列：true
+    是否为字符串列：true
+    是否为日期列：false
+    是否为时间列：false
+    是否为序列列：false
+    列长度：3
+    列精度：0
+    -------------------------------------
+    列名：EXTRA
+    列类型：VARCHAR
+    字段名：extra
+    注释：
+    类型包名：java.lang
+    类型短名：String
+    类型全名：java.lang.String
+    是否主键：false
+    是否可空：false
+    是否为BLOB列：false
+    是否为String列：true
+    是否为字符串列：true
+    是否为日期列：false
+    是否为时间列：false
+    是否为序列列：false
+    列长度：30
+    列精度：0
+    -------------------------------------
+    列名：PRIVILEGES
+    列类型：VARCHAR
+    字段名：privileges
+    注释：
+    类型包名：java.lang
+    类型短名：String
+    类型全名：java.lang.String
+    是否主键：false
+    是否可空：false
+    是否为BLOB列：false
+    是否为String列：true
+    是否为字符串列：true
+    是否为日期列：false
+    是否为时间列：false
+    是否为序列列：false
+    列长度：80
+    列精度：0
+    -------------------------------------
+    列名：COLUMN_COMMENT
+    列类型：VARCHAR
+    字段名：columnComment
+    注释：
+    类型包名：java.lang
+    类型短名：String
+    类型全名：java.lang.String
+    是否主键：false
+    是否可空：false
+    是否为BLOB列：false
+    是否为String列：true
+    是否为字符串列：true
+    是否为日期列：false
+    是否为时间列：false
+    是否为序列列：false
+    列长度：1024
+    列精度：0
+
+Blob列：
+    -------------------------------------
+    列名：COLUMN_DEFAULT
+    列类型：LONGVARCHAR
+    字段名：columnDefault
+    注释：
+    类型包名：java.lang
+    类型短名：String
+    类型全名：java.lang.String
+    是否主键：false
+    是否可空：true
+    是否为BLOB列：true
+    是否为String列：true
+    是否为字符串列：true
+    是否为日期列：false
+    是否为时间列：false
+    是否为序列列：false
+    列长度：2147483647
+    列精度：0
+    -------------------------------------
+    列名：COLUMN_TYPE
+    列类型：LONGVARCHAR
+    字段名：columnType
+    注释：
+    类型包名：java.lang
+    类型短名：String
+    类型全名：java.lang.String
+    是否主键：false
+    是否可空：false
+    是否为BLOB列：true
+    是否为String列：true
+    是否为字符串列：true
+    是否为日期列：false
+    是否为时间列：false
+    是否为序列列：false
+    列长度：2147483647
+    列精度：0
+    -------------------------------------
+    列名：GENERATION_EXPRESSION
+    列类型：LONGVARCHAR
+    字段名：generationExpression
+    注释：
+    类型包名：java.lang
+    类型短名：String
+    类型全名：java.lang.String
+    是否主键：false
+    是否可空：false
+    是否为BLOB列：true
+    是否为String列：true
+    是否为字符串列：true
+    是否为日期列：false
+    是否为时间列：false
+    是否为序列列：false
+    列长度：2147483647
+    列精度：0
+
+=====================================
+全部列：
+列名 - 字段名
+    TABLE_CATALOG - tableCatalog
+    TABLE_SCHEMA - tableSchema
+    TABLE_NAME - tableName
+    COLUMN_NAME - columnName
+    ORDINAL_POSITION - ordinalPosition
+    IS_NULLABLE - isNullable
+    DATA_TYPE - dataType
+    CHARACTER_MAXIMUM_LENGTH - characterMaximumLength
+    CHARACTER_OCTET_LENGTH - characterOctetLength
+    NUMERIC_PRECISION - numericPrecision
+    NUMERIC_SCALE - numericScale
+    DATETIME_PRECISION - datetimePrecision
+    CHARACTER_SET_NAME - characterSetName
+    COLLATION_NAME - collationName
+    COLUMN_KEY - columnKey
+    EXTRA - extra
+    PRIVILEGES - privileges
+    COLUMN_COMMENT - columnComment
+    COLUMN_DEFAULT - columnDefault
+    COLUMN_TYPE - columnType
+    GENERATION_EXPRESSION - generationExpression

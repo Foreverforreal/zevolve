@@ -1,9 +1,9 @@
 package com.zhu.zevolve.codegen.controller;
 
-//import com.zhu.zevolve.codegen.service.TableService;
-
+import com.zhu.zevolve.codegen.service.TablesService;
 import com.zhu.zevolve.codegen.util.CodeGenUtil;
 import com.zhu.zevolve.common.response.ResponseEntity;
+import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,16 +12,16 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/codegen/table/")
+@Slf4j
 public class TableController {
-//    @Autowired
-//    TableService tableService;
+    @Autowired
+    TablesService tablesService;
     @Autowired
     CodeGenUtil codeGenUtil;
 
     @GetMapping("list")
     public ResponseEntity list(){
-        return null;
-//        return ResponseEntity.build().ok().addEntity(tableService.selectAll());
+        return ResponseEntity.build().ok().addEntity(tablesService.selectAll());
     }
 
     @PostMapping("gen")

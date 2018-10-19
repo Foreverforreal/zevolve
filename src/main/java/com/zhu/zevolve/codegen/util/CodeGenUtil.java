@@ -1,6 +1,7 @@
 package com.zhu.zevolve.codegen.util;
 
 import com.zhu.zevolve.common.util.ZStringUtils;
+import lombok.extern.slf4j.Slf4j;
 import org.mybatis.generator.api.MyBatisGenerator;
 import org.mybatis.generator.config.*;
 import org.mybatis.generator.internal.DefaultShellCallback;
@@ -11,6 +12,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 @Component
+@Slf4j
 public class CodeGenUtil {
     private static final String templatePrefix = "";
 
@@ -28,6 +30,11 @@ public class CodeGenUtil {
     private String jdbcPassword;
 
     public void gen(String schema, String tableName,String module) throws Exception {
+        schema = schema.toLowerCase();
+        tableName = tableName.toLowerCase();
+        module = module.toLowerCase();
+        log.debug("---准备在模块{}中生成表{}.{}对应代码---",module,schema,tableName);
+
         List<String> warnings = new ArrayList<String>();
         boolean overwrite = true;
         Configuration config = new Configuration();
@@ -45,10 +52,13 @@ public class CodeGenUtil {
         tableConfiguration.setGeneratedKey(generatedKey);
         context.addTableConfiguration(tableConfiguration);
 
-        // 添加插件
+        // 添加模板插件
         context.addPluginConfiguration(getMapperPlugin());
-        context.addPluginConfiguration(getServiceTemplatePlugin(ZStringUtils.toUpperCamel(tableName),module));
-        context.addPluginConfiguration(getServiceImpTemplatePlugin(ZStringUtils.toUpperCamel(tableName),module));
+        context.addPluginConfiguration(getMapperTemplatePlugin(module, ZStringUtils.toUpperCamel(tableName)));      //添加Dao
+        context.addPluginConfiguration(getServiceTemplatePlugin(module, ZStringUtils.toUpperCamel(tableName)));     //添加Service
+        context.addPluginConfiguration(getServiceImplTemplatePlugin(module, ZStringUtils.toUpperCamel(tableName)));  //添加ServiceImpl
+        context.addPluginConfiguration(getControllerTemplatePlugin(module, ZStringUtils.toUpperCamel(tableName)));  //添加Controller
+        context.addPluginConfiguration(getTestTemplatePlugin(module,""));
 
         // 添加生成项
         context.setJavaModelGeneratorConfiguration(getJavaModelGeneratorConfig(module));
@@ -59,8 +69,9 @@ public class CodeGenUtil {
         DefaultShellCallback callback = new DefaultShellCallback(overwrite);
         MyBatisGenerator myBatisGenerator = new MyBatisGenerator(config, callback, warnings);
         myBatisGenerator.generate(null);
+
         for (String warning : warnings) {
-            System.out.println(warning);
+            log.warn(warning);
         }
     }
 
@@ -91,6 +102,7 @@ public class CodeGenUtil {
         javaClientGeneratorConfiguration.setConfigurationType("XMLMAPPER");
         return javaClientGeneratorConfiguration;
     }
+
     private PluginConfiguration getMapperPlugin(){
         PluginConfiguration mapperPluginConfig = new PluginConfiguration();
         mapperPluginConfig.setConfigurationType("tk.mybatis.mapper.generator.MapperPlugin");
@@ -101,23 +113,30 @@ public class CodeGenUtil {
         mapperPluginConfig.addProperty("endingDelimiter","`");
         return mapperPluginConfig;
     }
-
-    private PluginConfiguration getServiceTemplatePlugin(String className,String module){
-        return getTemplatePlugin("templates/Service.ftl",className+"Service.java","service",module);
+    private PluginConfiguration getTestTemplatePlugin(String module,String className){
+        return getTemplatePlugin("generator/test-one.ftl","test.txt",module,"");
     }
-    private PluginConfiguration getServiceImpTemplatePlugin(String className,String module){
-        return getTemplatePlugin("templates/ServiceImpl.ftl",className+"ServiceImpl.java","service.serviceImpl",module);
+    private PluginConfiguration getMapperTemplatePlugin(String module, String className){
+        return getTemplatePlugin("templates/mapper.ftl",className+"Mapper.java",module,"mapper");
+    }
+    private PluginConfiguration getControllerTemplatePlugin(String module, String className){
+        return getTemplatePlugin("templates/controller.ftl",className+"Controller.java",module,"controller");
+    }
+    private PluginConfiguration getServiceTemplatePlugin(String module, String className){
+        return getTemplatePlugin("templates/service.ftl",className+"Service.java",module,"service");
+    }
+    private PluginConfiguration getServiceImplTemplatePlugin(String module, String className){
+        return getTemplatePlugin("templates/serviceImpl.ftl",className+"ServiceImpl.java",module,"service.serviceImpl");
     }
 
-    private PluginConfiguration getTemplatePlugin(String templatePath,String fileName,String subPackage,String module){
+    private PluginConfiguration getTemplatePlugin(String templatePath,String fileName,String module,String subPackage){
         PluginConfiguration pluginConfiguration = new PluginConfiguration();
         pluginConfiguration.setConfigurationType("tk.mybatis.mapper.generator.TemplateFilePlugin");
         pluginConfiguration.addProperty("targetProject",targetSrcPath);
         pluginConfiguration.addProperty("targetPackage",String.format("%s.%s.%s",targetPackage,module,subPackage));
-
+        pluginConfiguration.addProperty("modulePackage",String.format("%s.%s",targetPackage,module));
         pluginConfiguration.addProperty("templatePath",templatePath);
         pluginConfiguration.addProperty("fileName",fileName);
         return  pluginConfiguration;
     }
-
 }
