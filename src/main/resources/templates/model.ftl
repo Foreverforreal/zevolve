@@ -6,3 +6,6 @@ import javax.persistence.Table;
 
 @Table(name = "`${tableClass.tableName}`")
 public class ${tableClass.shortClassName} {
+
+
+}

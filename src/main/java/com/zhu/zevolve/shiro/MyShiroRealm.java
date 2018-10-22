@@ -8,8 +8,6 @@ import org.apache.shiro.authz.AuthorizationInfo;
 import org.apache.shiro.realm.AuthorizingRealm;
 import org.apache.shiro.subject.PrincipalCollection;
 
-import java.util.Objects;
-
 public class MyShiroRealm extends AuthorizingRealm {
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
@@ -24,17 +22,8 @@ public class MyShiroRealm extends AuthorizingRealm {
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
         String userName = (String) token.getPrincipal();
         //根据用户名去数据库查找相关用户，此处暂时为空
-        UserInfo userInfo = null;
 
-        if(Objects.isNull(userInfo)){
-            return null;
-        }
-
-        SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo(
-                userInfo.getName(),
-                userInfo.getPassword(),
-                getName()
-        );
+        SimpleAuthenticationInfo authenticationInfo = new SimpleAuthenticationInfo();
 
         return authenticationInfo;
     }

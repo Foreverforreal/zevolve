@@ -13,7 +13,7 @@ import org.springframework.transaction.annotation.Transactional;
 @Transactional
 @Slf4j
 @Service
-public class ${tableClass.shortClassName}ServiceImplextends BaseServiceImpl<${tableClass.shortClassName}> implements ${tableClass.shortClassName}Service {
+public class ${tableClass.shortClassName}ServiceImpl extends BaseServiceImpl<${tableClass.shortClassName}> implements ${tableClass.shortClassName}Service {
     @Autowired
     ${tableClass.shortClassName}Mapper ${tableClass.variableName}Mapper;
 

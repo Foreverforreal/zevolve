@@ -45,12 +45,9 @@ public class CodeGenUtil {
         context.addProperty("javaFileEncoding","UTF-8");
         context.setJdbcConnectionConfiguration(getJDBCConnectionConfig(schema));
 
-        TableConfiguration tableConfiguration = new TableConfiguration(context);
-        tableConfiguration.setTableName(tableName);
-        tableConfiguration.setSchema(schema);
-        GeneratedKey generatedKey=new GeneratedKey("id","MySql",true,null);
-        tableConfiguration.setGeneratedKey(generatedKey);
-        context.addTableConfiguration(tableConfiguration);
+        JavaTypeResolverConfiguration javaTypeResolverConfiguration = new JavaTypeResolverConfiguration();
+        javaTypeResolverConfiguration.setConfigurationType("com.zhu.zevolve.codegen.ZJavaTypeResolver");
+        context.setJavaTypeResolverConfiguration(javaTypeResolverConfiguration);
 
         // 添加模板插件
         context.addPluginConfiguration(getMapperPlugin());
@@ -64,6 +61,21 @@ public class CodeGenUtil {
         context.setJavaModelGeneratorConfiguration(getJavaModelGeneratorConfig(module));
         context.setSqlMapGeneratorConfiguration(getsqlMapGeneratorConfig(module));
         context.setJavaClientGeneratorConfiguration(getJavaClientGeneratorConfig(module));
+
+
+        TableConfiguration tableConfiguration = new TableConfiguration(context);
+        tableConfiguration.setTableName(tableName);
+        tableConfiguration.setSchema(schema);
+        tableConfiguration.addIgnoredColumn(new IgnoredColumn("create_time"));
+        tableConfiguration.addIgnoredColumn(new IgnoredColumn("update_time"));
+        tableConfiguration.addIgnoredColumn(new IgnoredColumn("create_user_id"));
+        tableConfiguration.addIgnoredColumn(new IgnoredColumn("update_user_id"));
+        tableConfiguration.addIgnoredColumn(new IgnoredColumn("del_flag"));
+        tableConfiguration.addIgnoredColumn(new IgnoredColumn("status"));
+        tableConfiguration.addIgnoredColumn(new IgnoredColumn("remark"));
+        GeneratedKey generatedKey=new GeneratedKey("id","MySql",true,null);
+        tableConfiguration.setGeneratedKey(generatedKey);
+        context.addTableConfiguration(tableConfiguration);
 
         config.addContext(context);
         DefaultShellCallback callback = new DefaultShellCallback(overwrite);
@@ -83,10 +95,13 @@ public class CodeGenUtil {
         jdbcConfig.setPassword(jdbcPassword);
         return jdbcConfig;
     }
+
     private JavaModelGeneratorConfiguration getJavaModelGeneratorConfig(String module){
         JavaModelGeneratorConfiguration javaModelGeneratorConfiguration = new JavaModelGeneratorConfiguration();
         javaModelGeneratorConfiguration.setTargetPackage(String.format("%s.%s.%s",targetPackage,module,"model"));
         javaModelGeneratorConfiguration.setTargetProject(targetSrcPath);
+        javaModelGeneratorConfiguration.addProperty("rootClass","com.zhu.zevolve.common.base.model.BaseEntity");
+
         return javaModelGeneratorConfiguration;
     }
     private SqlMapGeneratorConfiguration getsqlMapGeneratorConfig(String module){
