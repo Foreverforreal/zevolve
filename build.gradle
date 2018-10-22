@@ -5,10 +5,13 @@ buildscript {
         springBootVersion = '2.0.5.RELEASE'
     }
     repositories {
-        mavenCentral()
-    }
-    dependencies {
-        classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        repositories {
+            maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+            maven { url 'http://maven.aliyun.com/nexus/content/repositories/jcenter'}
+        }
+        dependencies {
+            classpath("org.springframework.boot:spring-boot-gradle-plugin:${springBootVersion}")
+        }
     }
 }
 
@@ -19,10 +22,11 @@ apply plugin: 'io.spring.dependency-management'
 
 group = 'com.zhu'
 version = '0.0.1-SNAPSHOT'
-sourceCompatibility = 10
+sourceCompatibility = 11
 
 repositories {
-    mavenCentral()
+    maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }
+    maven { url 'http://maven.aliyun.com/nexus/content/repositories/jcenter'}
 }
 ext {
     // 运行和打包的环境选择, 默认是开发环境
@@ -68,7 +72,7 @@ dependencies {
 
 def loadConfigGroovy(){
     println "==> Load configuration for '" + environment + "'"
-    File config = new File("config.groovy")
+    def config = file("config.groovy")
     new ConfigSlurper(environment).parse(config.toURI().toURL()).toProperties()
 }
 
