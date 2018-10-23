@@ -21,7 +21,7 @@ public class TableController {
 
     @GetMapping("list")
     public ResponseEntity list(){
-        return ResponseEntity.build().ok().addEntity(tablesService.selectAll());
+        return ResponseEntity.build().ok().body(tablesService.selectAll());
     }
 
     @PostMapping("gen")

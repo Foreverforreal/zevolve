@@ -1,8 +1,9 @@
 CREATE SCHEMA `zevolve`;
 
+drop table if exists zevolve.sys_user;
 CREATE TABLE zevolve.sys_user
 (
-    id int,
+    id int primary key,
     user_name varchar(20) NOT NULL,
     password varchar(20) NOT NULL,
     nick_name varchar(20),
@@ -21,9 +22,10 @@ CREATE TABLE zevolve.sys_user
 );
 ALTER TABLE zevolve.sys_user COMMENT = '系统用户表';
 
+drop table if exists zevolve.sys_role;
 CREATE TABLE zevolve.sys_role
 (
-    id int,
+    id int primary key,
     role_name varchar(20),
 
     create_time datetime,
@@ -36,9 +38,10 @@ CREATE TABLE zevolve.sys_role
 );
 ALTER TABLE zevolve.sys_role COMMENT = '角色表';
 
+drop table if exists zevolve.sys_permission;
 CREATE TABLE zevolve.sys_permission
 (
-    id int,
+    id int primary key,
     perms_name varchar(20),
     perms_sign varchar(50),
     herf varchar(20),
@@ -57,9 +60,10 @@ CREATE TABLE zevolve.sys_permission
 );
 ALTER TABLE zevolve.sys_permission COMMENT = '权限表';
 
+drop table if exists zevolve.sys_user_role;
 CREATE TABLE zevolve.sys_user_role
 (
-    id int,
+    id int primary key,
     user_id int,
     role_id int,
 
@@ -73,9 +77,10 @@ CREATE TABLE zevolve.sys_user_role
 );
 ALTER TABLE zevolve.sys_user_role COMMENT = '用户角色表';
 
+drop table if exists zevolve.sys_role_permission;
 CREATE TABLE zevolve.sys_role_permission
 (
-    id int,
+    id int primary key,
     role_id int,
     perms_id int,
 

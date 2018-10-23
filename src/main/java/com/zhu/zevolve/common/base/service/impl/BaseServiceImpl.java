@@ -1,12 +1,13 @@
 package com.zhu.zevolve.common.base.service.impl;
 
 import com.zhu.zevolve.common.base.mapper.BaseMapper;
+import com.zhu.zevolve.common.base.model.BaseEntity;
 import com.zhu.zevolve.common.base.service.BaseService;
 import org.apache.ibatis.session.RowBounds;
 
 import java.util.List;
 
-public abstract class BaseServiceImpl<T> implements BaseService<T> {
+public abstract class BaseServiceImpl<T extends BaseEntity> implements BaseService<T> {
     protected abstract BaseMapper<T> getMapper();
 
     @Override
@@ -152,5 +153,19 @@ public abstract class BaseServiceImpl<T> implements BaseService<T> {
     @Override
     public int insertUseGeneratedKeys(T record) {
         return getMapper().insertUseGeneratedKeys(record);
+    }
+
+    @Override
+    public int delteLogic(T record) {
+        record.setDelFlag(true);
+        return getMapper().delete(record);
+    }
+
+    @Override
+    public int delete(T record, boolean isLogic) {
+        record.setDelFlag(isLogic);
+        if(isLogic){
+        }
+        return getMapper().delete(record);
     }
 }

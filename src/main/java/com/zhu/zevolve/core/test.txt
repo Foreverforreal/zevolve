@@ -1,0 +1,185 @@
+目标package: com.zhu.zevolve.core.
+
+当前时间：
+2018年10月23日
+上午11:25:39
+2018-10-23 11:25:39
+
+所有配置的属性信息:
+modulePackage - com.zhu.zevolve.core
+fileName - test.txt
+targetProject - src/main/java
+targetPackage - com.zhu.zevolve.core.
+templatePath - generator/test-one.ftl
+
+实体和表的信息：
+表名：sys_user
+变量名：sysUser
+小写名：sysuser
+类名：SysUser
+全名：com.zhu.zevolve.core.model.SysUser
+包名：com.zhu.zevolve.core.model
+
+列的信息：
+=====================================
+主键：
+
+基础列：
+    -------------------------------------
+    列名：id
+    列类型：INTEGER
+    字段名：id
+    注释：
+    类型包名：java.lang
+    类型短名：Integer
+    类型全名：java.lang.Integer
+    是否主键：true
+    是否可空：true
+    是否为BLOB列：false
+    是否为String列：false
+    是否为字符串列：false
+    是否为日期列：false
+    是否为时间列：false
+    是否为序列列：false
+    列长度：10
+    列精度：0
+    -------------------------------------
+    列名：user_name
+    列类型：VARCHAR
+    字段名：userName
+    注释：
+    类型包名：java.lang
+    类型短名：String
+    类型全名：java.lang.String
+    是否主键：false
+    是否可空：false
+    是否为BLOB列：false
+    是否为String列：true
+    是否为字符串列：true
+    是否为日期列：false
+    是否为时间列：false
+    是否为序列列：false
+    列长度：20
+    列精度：0
+    -------------------------------------
+    列名：password
+    列类型：VARCHAR
+    字段名：password
+    注释：
+    类型包名：java.lang
+    类型短名：String
+    类型全名：java.lang.String
+    是否主键：false
+    是否可空：false
+    是否为BLOB列：false
+    是否为String列：true
+    是否为字符串列：true
+    是否为日期列：false
+    是否为时间列：false
+    是否为序列列：false
+    列长度：20
+    列精度：0
+    -------------------------------------
+    列名：nick_name
+    列类型：VARCHAR
+    字段名：nickName
+    注释：
+    类型包名：java.lang
+    类型短名：String
+    类型全名：java.lang.String
+    是否主键：false
+    是否可空：true
+    是否为BLOB列：false
+    是否为String列：true
+    是否为字符串列：true
+    是否为日期列：false
+    是否为时间列：false
+    是否为序列列：false
+    列长度：20
+    列精度：0
+    -------------------------------------
+    列名：salt
+    列类型：VARCHAR
+    字段名：salt
+    注释：
+    类型包名：java.lang
+    类型短名：String
+    类型全名：java.lang.String
+    是否主键：false
+    是否可空：true
+    是否为BLOB列：false
+    是否为String列：true
+    是否为字符串列：true
+    是否为日期列：false
+    是否为时间列：false
+    是否为序列列：false
+    列长度：50
+    列精度：0
+    -------------------------------------
+    列名：mobile
+    列类型：VARCHAR
+    字段名：mobile
+    注释：
+    类型包名：java.lang
+    类型短名：String
+    类型全名：java.lang.String
+    是否主键：false
+    是否可空：true
+    是否为BLOB列：false
+    是否为String列：true
+    是否为字符串列：true
+    是否为日期列：false
+    是否为时间列：false
+    是否为序列列：false
+    列长度：20
+    列精度：0
+    -------------------------------------
+    列名：group_id
+    列类型：SMALLINT
+    字段名：groupId
+    注释：
+    类型包名：java.lang
+    类型短名：Short
+    类型全名：java.lang.Short
+    是否主键：false
+    是否可空：true
+    是否为BLOB列：false
+    是否为String列：false
+    是否为字符串列：false
+    是否为日期列：false
+    是否为时间列：false
+    是否为序列列：false
+    列长度：5
+    列精度：0
+    -------------------------------------
+    列名：eamil
+    列类型：VARCHAR
+    字段名：eamil
+    注释：
+    类型包名：java.lang
+    类型短名：String
+    类型全名：java.lang.String
+    是否主键：false
+    是否可空：true
+    是否为BLOB列：false
+    是否为String列：true
+    是否为字符串列：true
+    是否为日期列：false
+    是否为时间列：false
+    是否为序列列：false
+    列长度：64
+    列精度：0
+
+Blob列：
+
+=====================================
+全部列：
+列名 - 字段名
+    id - id
+    user_name - userName
+    password - password
+    nick_name - nickName
+    salt - salt
+    mobile - mobile
+    group_id - groupId
+    eamil - eamil

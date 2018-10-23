@@ -45,6 +45,7 @@ public class CodeGenUtil {
         context.addProperty("javaFileEncoding","UTF-8");
         context.setJdbcConnectionConfiguration(getJDBCConnectionConfig(schema));
 
+        //自定义类型转换器
         JavaTypeResolverConfiguration javaTypeResolverConfiguration = new JavaTypeResolverConfiguration();
         javaTypeResolverConfiguration.setConfigurationType("com.zhu.zevolve.codegen.ZJavaTypeResolver");
         context.setJavaTypeResolverConfiguration(javaTypeResolverConfiguration);
