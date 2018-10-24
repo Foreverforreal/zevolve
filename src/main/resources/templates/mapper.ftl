@@ -5,6 +5,7 @@ import com.zhu.zevolve.common.base.mapper.BaseMapper;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
+<#assign dateTime = .now>
 /**
 * @program: zevolve
 * @description: Mapper

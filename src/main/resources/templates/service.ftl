@@ -3,6 +3,7 @@ package ${package};
 import ${tableClass.packageName}.${tableClass.shortClassName};
 import com.zhu.zevolve.common.base.service.BaseService;
 
+<#assign dateTime = .now>
 /**
 * @program: zevolve
 * @description: Service

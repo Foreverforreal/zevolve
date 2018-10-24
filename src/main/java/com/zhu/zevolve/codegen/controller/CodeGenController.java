@@ -20,7 +20,7 @@ public class CodeGenController {
         try {
             codeGenUtil.gen(schema,tableName,module);
         } catch (Exception e) {
-            log.error("{}",e);
+            log.error(e.getMessage());
             return ResponseEntity.build().error();
         }
 

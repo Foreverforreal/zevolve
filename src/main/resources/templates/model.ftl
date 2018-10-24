@@ -4,6 +4,7 @@ import javax.persistence.Column;
 import javax.persistence.Id;
 import javax.persistence.Table;
 
+<#assign dateTime = .now>
 /**
 * @program: zevolve
 * @description: Model

@@ -59,7 +59,7 @@ public class CodeGenUtil {
         }
 
          //添加生成项
-//        context.setJavaModelGeneratorConfiguration(getJavaModelGeneratorConfig(module));
+        context.setJavaModelGeneratorConfiguration(getJavaModelGeneratorConfig(module));
 //        context.setSqlMapGeneratorConfiguration(getsqlMapGeneratorConfig(module));
 //        context.setJavaClientGeneratorConfiguration(getJavaClientGeneratorConfig(module));
 

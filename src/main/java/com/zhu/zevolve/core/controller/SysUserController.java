@@ -1,9 +1,9 @@
-package ${package};
+package com.zhu.zevolve.core.controller;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
-import ${modulePackage}.model.${tableClass.shortClassName};
-import ${modulePackage}.service.${tableClass.shortClassName}Service;
+import com.zhu.zevolve.core.model.SysUser;
+import com.zhu.zevolve.core.service.SysUserService;
 import com.zhu.zevolve.common.response.ResponseEntity;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,25 +13,24 @@ import org.springframework.web.bind.annotation.RestController;
 import java.util.List;
 import java.util.Objects;
 
-<#assign dateTime = .now>
 /**
 * @program: zevolve
 * @description: Controller
 * @author: zhu
-* @create: ${dateTime?string["yyyy-MM-dd HH:mm:ss"]}
+* @create: 2018-10-24 13:06:08
 **/
 
 @RestController
 @Slf4j
 @RequestMapping("")
-public class ${tableClass.shortClassName}Controller {
+public class SysUserController {
     @Autowired
-    ${tableClass.shortClassName}Service ${tableClass.variableName}Service;
+    SysUserService sysUserService;
 
     @PostMapping
-    public ResponseEntity<Integer> add(${tableClass.shortClassName} ${tableClass.variableName}){
+    public ResponseEntity<Integer> add(SysUser sysUser){
         try {
-            int count = ${tableClass.variableName}Service.insert(${tableClass.variableName});
+            int count = sysUserService.insert(sysUser);
             if(count > 0){
                 return ResponseEntity.build().createSuccess().body(count);
             }
@@ -44,10 +43,10 @@ public class ${tableClass.shortClassName}Controller {
 
     @DeleteMapping("delete")
     public ResponseEntity delete(Integer id){
-        ${tableClass.shortClassName} ${tableClass.variableName} = new ${tableClass.shortClassName}();
-        ${tableClass.variableName}.setId(id);
+        SysUser sysUser = new SysUser();
+        sysUser.setId(id);
         try {
-            int count = ${tableClass.variableName}Service.delteLogic(${tableClass.variableName});
+            int count = sysUserService.delteLogic(sysUser);
             if(count > 0){
                 return ResponseEntity.build().createSuccess().body(count);
             }
@@ -59,7 +58,7 @@ public class ${tableClass.shortClassName}Controller {
     }
 
     @PutMapping
-    public ResponseEntity update(${tableClass.shortClassName} ${tableClass.variableName}){
+    public ResponseEntity update(SysUser sysUser){
         try {
         } catch (Exception e) {
             log.error("{}",e);
@@ -69,25 +68,25 @@ public class ${tableClass.shortClassName}Controller {
     }
 
     @GetMapping("{id}")
-    public ResponseEntity<${tableClass.shortClassName}> get(@PathVariable Integer id){
-        ${tableClass.shortClassName} ${tableClass.variableName} = ${tableClass.variableName}Service.selectByPrimaryKey(id);
-        if(Objects.isNull(${tableClass.variableName})){
+    public ResponseEntity<SysUser> get(@PathVariable Integer id){
+        SysUser sysUser = sysUserService.selectByPrimaryKey(id);
+        if(Objects.isNull(sysUser)){
             return ResponseEntity.build().notFound();
         }
-            return ResponseEntity.build().ok().body(${tableClass.variableName});
+            return ResponseEntity.build().ok().body(sysUser);
     }
 
     @GetMapping
-    public ResponseEntity<${tableClass.shortClassName}> getPage(Integer pageNum,Integer pageSize,${tableClass.shortClassName} ${tableClass.variableName}){
-        List<${tableClass.shortClassName}> ${tableClass.variableName}List = null;
+    public ResponseEntity<SysUser> getPage(Integer pageNum,Integer pageSize,SysUser sysUser){
+        List<SysUser> sysUserList = null;
         try {
             PageHelper.startPage(pageNum, pageSize);
-            ${tableClass.variableName}List = ${tableClass.variableName}Service.select(${tableClass.variableName});
+            sysUserList = sysUserService.select(sysUser);
         } catch (Exception e) {
             log.error("{}",e);
             return ResponseEntity.build().error();
         }
-        PageInfo page = new PageInfo(${tableClass.variableName}List);
+        PageInfo page = new PageInfo(sysUserList);
         return ResponseEntity.build().ok().body(page);
     }
 
