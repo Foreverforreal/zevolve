@@ -25,13 +25,13 @@ group = 'com.zhu'
 version = '0.0.1-SNAPSHOT'
 sourceCompatibility = 11
 
-idea {
-    module {
-        inheritOutputDirs = false
-        outputDir = file("$buildDir/classes/main/")
-        testOutputDir = file("$buildDir/classes/test/")
-    }
-}
+//idea {
+//    module {
+//        inheritOutputDirs = false
+//        outputDir = file("$buildDir/classes/java/main/")
+//        testOutputDir = file("$buildDir/classes/java/test/")
+//    }
+//}
 
 repositories {
     maven { url 'http://maven.aliyun.com/nexus/content/groups/public/' }

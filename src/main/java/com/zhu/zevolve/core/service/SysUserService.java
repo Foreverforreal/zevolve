@@ -7,7 +7,7 @@ import com.zhu.zevolve.common.base.service.BaseService;
 * @program: zevolve
 * @description: Service
 * @author: zhu
-* @create: 2018-10-24 13:06:08
+* @create: 2018-10-24 13:08:25
 **/
 
 public interface SysUserService extends BaseService<SysUser> {

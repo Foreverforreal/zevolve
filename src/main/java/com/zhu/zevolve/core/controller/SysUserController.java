@@ -2,13 +2,12 @@ package com.zhu.zevolve.core.controller;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.zhu.zevolve.common.response.ResponseEntity;
 import com.zhu.zevolve.core.model.SysUser;
 import com.zhu.zevolve.core.service.SysUserService;
-import com.zhu.zevolve.common.response.ResponseEntity;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 import java.util.Objects;
@@ -17,12 +16,12 @@ import java.util.Objects;
 * @program: zevolve
 * @description: Controller
 * @author: zhu
-* @create: 2018-10-24 13:06:08
+* @create: 2018-10-24 13:08:25
 **/
 
 @RestController
 @Slf4j
-@RequestMapping("")
+@RequestMapping("sys/user/")
 public class SysUserController {
     @Autowired
     SysUserService sysUserService;
@@ -73,7 +72,7 @@ public class SysUserController {
         if(Objects.isNull(sysUser)){
             return ResponseEntity.build().notFound();
         }
-            return ResponseEntity.build().ok().body(sysUser);
+        return ResponseEntity.build().ok().body(sysUser);
     }
 
     @GetMapping

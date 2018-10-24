@@ -3,7 +3,7 @@ environments {
         database {
             codeGenUrl = 'jdbc:mysql://193.112.29.110:3306/%s?useUnicode=true&amp;characterEncoding=UTF-8'
             driverClassName = 'com.mysql.jdbc.Driver'
-            url = 'jdbc:mysql://193.112.29.110:3306/measite?useUnicode=true&amp;characterEncoding=UTF-8'
+            url = 'jdbc:mysql://193.112.29.110:3306/zevolve?useUnicode=true&amp;characterEncoding=UTF-8'
             username = 'kuaiyu'
             password = 'kuaiyu'
         }
@@ -12,9 +12,9 @@ environments {
     production { // 线上环境
         database {
             driverClassName = 'com.mysql.jdbc.Driver'
-            url = 'jdbc:mysql://localhost:3306/survey?useUnicode=true&amp;characterEncoding=UTF-8'
-            username = 'root'
-            password = 'wxyz'
+            url = 'jdbc:mysql://193.112.29.110:3306/zevolve?useUnicode=true&amp;characterEncoding=UTF-8'
+            username = 'kuaiyu'
+            password = 'kuaiyu'
         }
     }
 }
