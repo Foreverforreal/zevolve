@@ -2,13 +2,13 @@ package com.zhu.zevolve.core.controller;
 
 import com.github.pagehelper.PageHelper;
 import com.github.pagehelper.PageInfo;
+import com.zhu.zevolve.common.response.ResponseEntity;
 import com.zhu.zevolve.core.model.SysUser;
 import com.zhu.zevolve.core.service.SysUserService;
-import com.zhu.zevolve.common.response.ResponseEntity;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.shiro.crypto.SecureRandomNumberGenerator;
+import org.apache.shiro.crypto.hash.Md5Hash;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -31,12 +31,17 @@ public class SysUserController {
     @PostMapping
     public ResponseEntity<Integer> add(SysUser sysUser){
         try {
+            String random=new SecureRandomNumberGenerator().nextBytes().toHex();
+             //将原始密码加盐（上面生成的盐），并且用md5算法加密三次，将最后结果存入数据库中
+            String salt = new Md5Hash(sysUser.getPassword(),random,3).toString();
+            sysUser.setSalt(salt);
+
             int count = sysUserService.insert(sysUser);
             if(count > 0){
                 return ResponseEntity.build().createSuccess().body(count);
             }
         } catch (Exception e) {
-            log.error("{}",e);
+            log.error("",e);
             return ResponseEntity.build().error();
         }
         return ResponseEntity.build().ok();
