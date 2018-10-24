@@ -23,7 +23,7 @@ import java.util.Objects;
 
 @RestController
 @Slf4j
-@RequestMapping("sys/user/")
+@RequestMapping("/sys/user/")
 public class SysUserController {
     @Autowired
     SysUserService sysUserService;

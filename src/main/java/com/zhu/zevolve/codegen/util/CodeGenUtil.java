@@ -27,7 +27,7 @@ public class CodeGenUtil {
     @Value("${codeGen.datasource.password}")
     private String jdbcPassword;
 
-    public void gen(String schema, String tableNames ,String module) throws Exception {
+    public void gen(String schema, String tableNames ,String module,String genItem) throws Exception {
         schema = schema.toLowerCase();
         tableNames = tableNames.toLowerCase();
         module = module.toLowerCase();
@@ -50,10 +50,14 @@ public class CodeGenUtil {
 
         context.addPluginConfiguration(getMapperPlugin());
         for (String tableName : tableNames.split(",")) {
-            context.addPluginConfiguration(getMapperTemplatePlugin(module, ZStringUtils.toUpperCamel(tableName)));      //添加Dao
-            context.addPluginConfiguration(getServiceTemplatePlugin(module, ZStringUtils.toUpperCamel(tableName)));     //添加Service
-            context.addPluginConfiguration(getServiceImplTemplatePlugin(module, ZStringUtils.toUpperCamel(tableName)));  //添加ServiceImpl
-            context.addPluginConfiguration(getControllerTemplatePlugin(module, ZStringUtils.toUpperCamel(tableName)));  //添加Controller
+            if(genItem.contains("mapper"))
+                context.addPluginConfiguration(getMapperTemplatePlugin(module, ZStringUtils.toUpperCamel(tableName)));
+            if(genItem.contains("service"))
+                context.addPluginConfiguration(getServiceTemplatePlugin(module, ZStringUtils.toUpperCamel(tableName)));
+            if(genItem.contains("serviceImpl"))
+                context.addPluginConfiguration(getServiceImplTemplatePlugin(module, ZStringUtils.toUpperCamel(tableName)));
+            if(genItem.contains("controller"))
+                context.addPluginConfiguration(getControllerTemplatePlugin(module, ZStringUtils.toUpperCamel(tableName)));
 
             context.addTableConfiguration(getTableConfiguration(tableName,schema,context));
         }

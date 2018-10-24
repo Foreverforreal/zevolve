@@ -16,14 +16,13 @@ public class CodeGenController {
     CodeGenUtil codeGenUtil;
 
     @PostMapping("gen")
-    public ResponseEntity<String> gen(String schema ,String tableName,String module){
+    public ResponseEntity<String> gen(String schema ,String tableName,String module,String genItem){
         try {
-            codeGenUtil.gen(schema,tableName,module);
+            codeGenUtil.gen(schema,tableName,module,genItem);
         } catch (Exception e) {
             log.error(e.getMessage());
             return ResponseEntity.build().error();
         }
-
         return ResponseEntity.build().ok();
     }
 }

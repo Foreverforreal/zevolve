@@ -1,10 +1,9 @@
 package com.zhu.zevolve.common.base.model;
 
 import lombok.Data;
+import tk.mybatis.mapper.annotation.KeySql;
 
 import javax.persistence.Column;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import java.time.LocalDateTime;
 
@@ -12,7 +11,7 @@ import java.time.LocalDateTime;
 public class BaseEntity {
     @Id
     @Column(name = "`id`")
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    @KeySql(useGeneratedKeys = true)
     protected Integer id;
 
     @Column(name = "`create_time`")
