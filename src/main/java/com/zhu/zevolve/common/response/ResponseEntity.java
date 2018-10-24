@@ -1,9 +1,11 @@
 package com.zhu.zevolve.common.response;
 
+import lombok.Data;
 import org.springframework.http.HttpStatus;
 
 import java.io.Serializable;
 
+@Data
 public class ResponseEntity<T> implements Serializable {
     private int code;
     private String msg;

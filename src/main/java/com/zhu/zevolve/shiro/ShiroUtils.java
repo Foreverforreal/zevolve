@@ -1,10 +1,10 @@
 package com.zhu.zevolve.shiro;
 
-import org.apache.shiro.mgt.SecurityManager;
-import org.apache.shiro.session.mgt.SessionManager;
-import org.apache.shiro.subject.Subject;
+import com.zhu.zevolve.core.model.SysUser;
+import org.apache.shiro.SecurityUtils;
 
 public class ShiroUtils {
-    private void getCurrentUser(){
+    private SysUser getCurrentUser(){
+        return (SysUser) SecurityUtils.getSubject().getPrincipal();
     }
 }
