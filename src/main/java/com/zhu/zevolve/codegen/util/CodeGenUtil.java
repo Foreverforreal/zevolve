@@ -14,8 +14,6 @@ import java.util.List;
 @Component
 @Slf4j
 public class CodeGenUtil {
-    private static final String templatePrefix = "";
-
     private String targetSrcPath = "src/main/java";
     private String targetResPath = "src/main/resources";
     private String targetPackage = "com.zhu.zevolve";
@@ -29,14 +27,14 @@ public class CodeGenUtil {
     @Value("${codeGen.datasource.password}")
     private String jdbcPassword;
 
-    public void gen(String schema, String tableName,String module) throws Exception {
+    public void gen(String schema, String tableNames ,String module) throws Exception {
         schema = schema.toLowerCase();
-        tableName = tableName.toLowerCase();
+        tableNames = tableNames.toLowerCase();
         module = module.toLowerCase();
-        log.debug("---准备在模块{}中生成表{}.{}对应代码---",module,schema,tableName);
+        log.debug("---准备在模块{}中生成表schema {}下表{}对应代码---",module,schema,tableNames);
 
-        List<String> warnings = new ArrayList<String>();
         boolean overwrite = true;
+        List<String> warnings = new ArrayList<String>();
         Configuration config = new Configuration();
 
         Context context = new Context(ModelType.FLAT);
@@ -50,33 +48,20 @@ public class CodeGenUtil {
         javaTypeResolverConfiguration.setConfigurationType("com.zhu.zevolve.codegen.ZJavaTypeResolver");
         context.setJavaTypeResolverConfiguration(javaTypeResolverConfiguration);
 
-        // 添加模板插件
         context.addPluginConfiguration(getMapperPlugin());
-        context.addPluginConfiguration(getMapperTemplatePlugin(module, ZStringUtils.toUpperCamel(tableName)));      //添加Dao
-        context.addPluginConfiguration(getServiceTemplatePlugin(module, ZStringUtils.toUpperCamel(tableName)));     //添加Service
-        context.addPluginConfiguration(getServiceImplTemplatePlugin(module, ZStringUtils.toUpperCamel(tableName)));  //添加ServiceImpl
-        context.addPluginConfiguration(getControllerTemplatePlugin(module, ZStringUtils.toUpperCamel(tableName)));  //添加Controller
-        context.addPluginConfiguration(getTestTemplatePlugin(module,""));
+        for (String tableName : tableNames.split(",")) {
+            context.addPluginConfiguration(getMapperTemplatePlugin(module, ZStringUtils.toUpperCamel(tableName)));      //添加Dao
+            context.addPluginConfiguration(getServiceTemplatePlugin(module, ZStringUtils.toUpperCamel(tableName)));     //添加Service
+            context.addPluginConfiguration(getServiceImplTemplatePlugin(module, ZStringUtils.toUpperCamel(tableName)));  //添加ServiceImpl
+            context.addPluginConfiguration(getControllerTemplatePlugin(module, ZStringUtils.toUpperCamel(tableName)));  //添加Controller
 
-        // 添加生成项
-        context.setJavaModelGeneratorConfiguration(getJavaModelGeneratorConfig(module));
-        context.setSqlMapGeneratorConfiguration(getsqlMapGeneratorConfig(module));
-        context.setJavaClientGeneratorConfiguration(getJavaClientGeneratorConfig(module));
+            context.addTableConfiguration(getTableConfiguration(tableName,schema,context));
+        }
 
-
-        TableConfiguration tableConfiguration = new TableConfiguration(context);
-        tableConfiguration.setTableName(tableName);
-        tableConfiguration.setSchema(schema);
-        tableConfiguration.addIgnoredColumn(new IgnoredColumn("create_time"));
-        tableConfiguration.addIgnoredColumn(new IgnoredColumn("update_time"));
-        tableConfiguration.addIgnoredColumn(new IgnoredColumn("create_user_id"));
-        tableConfiguration.addIgnoredColumn(new IgnoredColumn("update_user_id"));
-        tableConfiguration.addIgnoredColumn(new IgnoredColumn("del_flag"));
-        tableConfiguration.addIgnoredColumn(new IgnoredColumn("status"));
-        tableConfiguration.addIgnoredColumn(new IgnoredColumn("remark"));
-        GeneratedKey generatedKey=new GeneratedKey("id","MySql",true,null);
-        tableConfiguration.setGeneratedKey(generatedKey);
-        context.addTableConfiguration(tableConfiguration);
+         //添加生成项
+//        context.setJavaModelGeneratorConfiguration(getJavaModelGeneratorConfig(module));
+//        context.setSqlMapGeneratorConfiguration(getsqlMapGeneratorConfig(module));
+//        context.setJavaClientGeneratorConfiguration(getJavaClientGeneratorConfig(module));
 
         config.addContext(context);
         DefaultShellCallback callback = new DefaultShellCallback(overwrite);
@@ -144,8 +129,8 @@ public class CodeGenUtil {
     private PluginConfiguration getServiceImplTemplatePlugin(String module, String className){
         return getTemplatePlugin("templates/serviceImpl.ftl",className+"ServiceImpl.java",module,"service.serviceImpl");
     }
-
     private PluginConfiguration getTemplatePlugin(String templatePath,String fileName,String module,String subPackage){
+
         PluginConfiguration pluginConfiguration = new PluginConfiguration();
         pluginConfiguration.setConfigurationType("tk.mybatis.mapper.generator.TemplateFilePlugin");
         pluginConfiguration.addProperty("targetProject",targetSrcPath);
@@ -154,5 +139,22 @@ public class CodeGenUtil {
         pluginConfiguration.addProperty("templatePath",templatePath);
         pluginConfiguration.addProperty("fileName",fileName);
         return  pluginConfiguration;
+    }
+
+    private TableConfiguration getTableConfiguration(String tableName,String schema,Context context){
+        TableConfiguration tableConfiguration = new TableConfiguration(context);
+        tableConfiguration.setTableName(tableName);
+        tableConfiguration.setSchema(schema);
+        tableConfiguration.addIgnoredColumn(new IgnoredColumn("id"));
+        tableConfiguration.addIgnoredColumn(new IgnoredColumn("create_time"));
+        tableConfiguration.addIgnoredColumn(new IgnoredColumn("update_time"));
+        tableConfiguration.addIgnoredColumn(new IgnoredColumn("create_user_id"));
+        tableConfiguration.addIgnoredColumn(new IgnoredColumn("update_user_id"));
+        tableConfiguration.addIgnoredColumn(new IgnoredColumn("del_flag"));
+        tableConfiguration.addIgnoredColumn(new IgnoredColumn("status"));
+        tableConfiguration.addIgnoredColumn(new IgnoredColumn("remark"));
+        GeneratedKey generatedKey=new GeneratedKey("id","MySql",true,null);
+        tableConfiguration.setGeneratedKey(generatedKey);
+        return tableConfiguration;
     }
 }

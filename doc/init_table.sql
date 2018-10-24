@@ -1,4 +1,4 @@
-CREATE SCHEMA `zevolve`;
+CREATE SCHEMA if not exists `zevolve`;
 
 drop table if exists zevolve.sys_user;
 CREATE TABLE zevolve.sys_user

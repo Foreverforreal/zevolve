@@ -11,7 +11,7 @@ import org.springframework.stereotype.Repository;
 * @author: zhu
 * @create: ${dateTime?string["yyyy-MM-dd HH:mm:ss"]}
 **/
-
+<#---->
 @Repository
 @Mapper
 public interface ${tableClass.shortClassName}Mapper extends BaseMapper<${tableClass.shortClassName}> {

@@ -59,8 +59,7 @@ dependencies {
     implementation('org.mybatis.generator:mybatis-generator-core:1.3.7')        // MBG
     implementation('tk.mybatis:mapper-spring-boot-starter:2.0.4')               // 通用mapper tk.myabtis
     implementation('tk.mybatis:mapper-generator:1.0.5')                         // MBG插件
-
-    implementation('com.github.pagehelper:pagehelper-spring-boot-starter:1.2.7')// 通用分页插件
+    implementation('com.github.pagehelper:pagehelper-spring-boot-starter:1.2.7')// 分页插件
 
     implementation('com.google.guava:guava:26.0-jre')                           // google guava
     implementation('com.alibaba:druid:1.1.11')                                  //druid
