@@ -28,8 +28,8 @@ sourceCompatibility = 11
 idea {
     module {
         inheritOutputDirs = false
-        outputDir = file("$buildDir/")
-
+        outputDir = file("$buildDir/classes/java/main/")
+        testOutputDir = file("$buildDir/classes/java/test/")
     }
 }
 
