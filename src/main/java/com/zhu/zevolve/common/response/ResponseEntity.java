@@ -14,7 +14,7 @@ public class ResponseEntity<T> implements Serializable {
     private ResponseEntity(){ }
 
     public static ResponseEntity build(){
-        return new ResponseEntity().msg("");
+        return new ResponseEntity().ok().msg("");
     }
     public ResponseEntity ok(){
         this.code = HttpStatus.OK.value();

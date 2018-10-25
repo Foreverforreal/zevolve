@@ -2,12 +2,15 @@ package com.zhu.zevolve.core.model;
 
 import com.zhu.zevolve.common.base.model.BaseEntity;
 import javax.persistence.*;
+import javax.validation.constraints.NotBlank;
 
 @Table(name = "`sys_user`")
 public class SysUser extends BaseEntity {
+    @NotBlank(message = "帐号不能为空")
     @Column(name = "`user_name`")
     private String userName;
 
+    @NotBlank(message = "密码不能为空")
     @Column(name = "`password`")
     private String password;
 

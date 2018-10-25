@@ -31,10 +31,11 @@ public class SysUserController {
     @PostMapping
     public ResponseEntity<Integer> add(SysUser sysUser){
         try {
-            String random=new SecureRandomNumberGenerator().nextBytes().toHex();
+            String salt=new SecureRandomNumberGenerator().nextBytes().toHex();
              //将原始密码加盐（上面生成的盐），并且用md5算法加密三次，将最后结果存入数据库中
-            String salt = new Md5Hash(sysUser.getPassword(),random,3).toString();
+            String encryptPass = new Md5Hash(sysUser.getPassword(),salt,3).toString();
             sysUser.setSalt(salt);
+            sysUser.setPassword(encryptPass);
 
             int count = sysUserService.insert(sysUser);
             if(count > 0){

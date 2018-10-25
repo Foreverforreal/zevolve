@@ -1,6 +1,9 @@
 port : 8080
 
 spring:
+  application:
+    name:
+      zevolve
   datasource:
     type: com.alibaba.druid.pool.DruidDataSource
     driverClassName: @database.driverClassName@
@@ -22,6 +25,7 @@ spring:
     filters: stat,wall,slf4j
     logSlowSql: true
 
+
 mybatis:
   mapperLocations: classpath:mapper/*/*.xml
   configuration:
@@ -39,3 +43,6 @@ codeGen:
     formatUrl: @database.codeGenUrl@
     username: @database.username@
     password: @database.password@
+
+logging:
+  file: log/${spring.application.name}.log
