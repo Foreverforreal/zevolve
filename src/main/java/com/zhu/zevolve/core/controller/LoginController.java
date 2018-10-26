@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import javax.validation.Valid;
-import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
@@ -25,7 +24,7 @@ public class LoginController {
     @PostMapping
     public ResponseEntity<Integer> login(@Valid SysUser sysUser, BindingResult bindingResult){
         if(bindingResult.hasErrors()){
-            List<String> erroMessge = bindingResult.getAllErrors()
+            var erroMessge = bindingResult.getAllErrors()
                     .stream()
                     .map(ObjectError::getDefaultMessage)
                     .collect(Collectors.toList());
